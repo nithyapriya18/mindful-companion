@@ -4,12 +4,12 @@ const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
 
 if (!supabaseUrl || !supabaseAnonKey) {
-  throw new Error('Missing Supabase environment variables')
+  throw new Error('Missing Supabase environment variables. Please check your .env.local file.')
 }
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey)
 
-// Database types (we'll expand this as we build)
+// Database types
 export type Profile = {
   id: string
   full_name: string
