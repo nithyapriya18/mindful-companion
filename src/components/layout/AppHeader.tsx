@@ -11,6 +11,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { ThemeToggle } from './ThemeToggle';
 
 export function AppHeader() {
   const { user, logout } = useAuth();
@@ -29,7 +30,9 @@ export function AppHeader() {
         <div className="flex items-center justify-between h-16">
           <Logo size="md" linkTo="/dashboard" />
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
+            <ThemeToggle />
+            
             <Button 
               variant="destructive" 
               size="sm" 

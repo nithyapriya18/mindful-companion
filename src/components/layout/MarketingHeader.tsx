@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Logo } from './Logo';
 import { Button } from '@/components/ui/button';
+import { ThemeToggle } from './ThemeToggle';
 
 export function MarketingHeader() {
   return (
@@ -24,7 +25,8 @@ export function MarketingHeader() {
             </a>
           </nav>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
+            <ThemeToggle />
             <Link to="/signin">
               <Button variant="ghost" className="font-medium">
                 Sign In
