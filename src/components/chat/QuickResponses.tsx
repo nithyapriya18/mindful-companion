@@ -1,26 +1,35 @@
+import { Button } from '@/components/ui/button'
+import { Loader2 } from 'lucide-react'
+
 interface QuickResponsesProps {
-  onSelect: (response: string) => void;
+  onSelect: (response: string) => void
+  prompts: string[]
+  isLoading?: boolean
 }
 
-const responses = [
-  "Tell me more",
-  "That's hard to explain",
-  "Can we change topics?",
-  "I need a moment",
-];
+export function QuickResponses({ onSelect, prompts, isLoading }: QuickResponsesProps) {
+  if (isLoading) {
+    return (
+      <div className="flex gap-2 items-center justify-center py-2">
+        <Loader2 className="w-4 h-4 animate-spin text-muted-foreground" />
+        <span className="text-xs text-muted-foreground">Thinking of responses...</span>
+      </div>
+    )
+  }
 
-export function QuickResponses({ onSelect }: QuickResponsesProps) {
   return (
-    <div className="flex flex-wrap gap-2">
-      {responses.map((response) => (
-        <button
-          key={response}
-          onClick={() => onSelect(response)}
-          className="px-4 py-2 rounded-full bg-muted text-sm text-muted-foreground hover:bg-muted/80 hover:text-foreground transition-colors"
+    <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
+      {prompts.map((prompt, index) => (
+        <Button
+          key={index}
+          variant="outline"
+          size="sm"
+          onClick={() => onSelect(prompt)}
+          className="whitespace-nowrap flex-shrink-0 text-sm"
         >
-          {response}
-        </button>
+          {prompt}
+        </Button>
       ))}
     </div>
-  );
+  )
 }

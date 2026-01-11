@@ -7,7 +7,7 @@ import { useTherapist } from '@/contexts/TherapistContext';
 import { ArrowLeft } from 'lucide-react';
 
 export default function CustomizeTherapist() {
-  const { selectedTherapist, settings, updateSettings } = useTherapist();
+  const { selectedTherapist, uiSettings, updateSettings } = useTherapist();
   const navigate = useNavigate();
 
   if (!selectedTherapist) {
@@ -16,9 +16,9 @@ export default function CustomizeTherapist() {
   }
 
   const generateSampleResponse = () => {
-    const warmth = settings.warmth > 50 ? 'nurturing' : 'professional';
-    const directness = settings.directness > 50 ? 'direct' : 'exploratory';
-    const length = settings.responseLength > 50 ? 'detailed' : 'concise';
+    const warmth = uiSettings.warmth > 50 ? 'nurturing' : 'professional';
+    const directness = uiSettings.directness > 50 ? 'direct' : 'exploratory';
+    const length = uiSettings.responseLength > 50 ? 'detailed' : 'concise';
     
     const responses = {
       'nurturing-direct-detailed': "I hear you, and I'm sorry you're going through this. Work stress can really take a toll. Let's talk about what specifically happened today that made it difficult. What was the hardest part for you? Understanding the specifics can help us find practical strategies to manage these situations better.",
@@ -88,7 +88,7 @@ export default function CustomizeTherapist() {
               leftLabel="More Professional"
               rightLabel="More Nurturing"
               description="Adjusts how formal or warm the language feels"
-              value={settings.warmth}
+              value={uiSettings.warmth}
               onChange={(value) => updateSettings({ warmth: value })}
             />
 
@@ -97,12 +97,12 @@ export default function CustomizeTherapist() {
               leftLabel="Gentle & Exploratory"
               rightLabel="Direct & Action-Oriented"
               description="How directly suggestions and observations are communicated"
-              value={settings.directness}
+              value={uiSettings.directness}
               onChange={(value) => updateSettings({ directness: value })}
             />
 
             <HumorSelector
-              value={settings.humor}
+              value={uiSettings.humor}
               onChange={(value) => updateSettings({ humor: value })}
             />
 
@@ -111,7 +111,7 @@ export default function CustomizeTherapist() {
               leftLabel="Concise"
               rightLabel="Detailed"
               description="Whether responses are brief and focused or more expansive"
-              value={settings.responseLength}
+              value={uiSettings.responseLength}
               onChange={(value) => updateSettings({ responseLength: value })}
             />
           </div>

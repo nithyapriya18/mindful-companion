@@ -106,6 +106,7 @@
 │   │   └── use-toast.ts
 │   ├── index.css
 │   ├── lib
+│   │   ├── supabase.ts
 │   │   └── utils.ts
 │   ├── main.tsx
 │   ├── pages
@@ -117,6 +118,8 @@
 │   │   ├── SignIn.tsx
 │   │   ├── SignUp.tsx
 │   │   └── TherapistSelection.tsx
+│   ├── services
+│   │   └── aiService.ts
 │   └── vite-env.d.ts
 ├── structure.txt
 ├── tailwind.config.ts
@@ -125,4 +128,4 @@
 ├── tsconfig.node.json
 └── vite.config.ts
 
-15 directories, 111 files
+16 directories, 113 files
